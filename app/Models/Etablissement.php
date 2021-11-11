@@ -12,12 +12,12 @@ class Etablissement extends Model
     use HasFactory;
 
     protected $fillable = [
-        'etablissement_nom',
         'etablissement_logo',
         'etablissement_numero_tel',
-        'etablissement_type',
         'etablissement_adresse',
-        'etablissement_statut'
+        'etablissement_longitude',
+        'etablissement_latitude',
+        'user_id'
     ];
 
     public function categories()
@@ -28,5 +28,10 @@ class Etablissement extends Model
     public function tokens()
     {
         return $this->hasMany(Token_order::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }

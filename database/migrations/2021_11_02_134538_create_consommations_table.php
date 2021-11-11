@@ -19,7 +19,6 @@ class CreateConsommationsTable extends Migration
             $table->string('consommation_description');
             $table->string('consommation_statut');
             $table->date('consommation_added_dateTime');
-
             $table->timestamps();
 
             $table->unsignedBigInteger('consommation_categorie_id');

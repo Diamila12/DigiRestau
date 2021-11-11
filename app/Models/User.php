@@ -8,6 +8,9 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\Commande;
+use App\Models\Client;
+use App\Models\Etablissement;
+use App\Models\TypeRestaurant;
 
 class User extends Authenticatable
 {
@@ -19,9 +22,13 @@ class User extends Authenticatable
      * @var string[]
      */
     protected $fillable = [
-        'name',
+        'nom',
         'email',
         'password',
+        'statut',
+        'is_actived',
+        'is_admin',
+        'approved'
     ];
 
     /**
@@ -46,5 +53,20 @@ class User extends Authenticatable
     public function commandes()
     {
         return $this->hasMany(Commande::class);
+    }
+
+    public function typesResta()
+    {
+        return $this->hasOne(TypeRestaurant::class);
+    }
+
+    public function client()
+    {
+        return $this->hasOne(Client::class);
+    }
+
+    public function etablissement()
+    {
+        return $this->hasOne(Etablissement::class);
     }
 }

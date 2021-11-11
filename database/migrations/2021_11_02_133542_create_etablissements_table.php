@@ -15,13 +15,16 @@ class CreateEtablissementsTable extends Migration
     {
         Schema::create('etablissements', function (Blueprint $table) {
             $table->id();
-            $table->string('etablissement_nom');
-            $table->string('etablissement_logo');
-            $table->string('etablissement_numero_tel');
-            $table->string('etablissement_type');
-            $table->string('etablissement_adresse');
-            $table->string('etablissement_statut');
+            $table->string('etablissement_logo')->nullable();
+            $table->string('etablissement_numero_tel')->nullable();
+            $table->string('etablissement_adresse')->nullable();
+            $table->string('latitude')->nullable();
+            $table->string('longitude')->nullable();
+
             $table->timestamps();
+
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
